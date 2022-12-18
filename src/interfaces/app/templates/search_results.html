@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="{% url 'home' %}" type="button" class="btn-warning">Back</a>
+
+    <div class="row">
+    {% for n in results %}
+    <div class="col-3" style="border:solid 1px;"><a href="{{n.1}}" target="_blank">{{ n.0 }}</a></div>
+    <br>
+    {% endfor %}
+    </div>
+
+{% endblock %}

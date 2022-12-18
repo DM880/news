@@ -45,15 +45,14 @@ def search_results(request, topic, geo, time):
         time = ''
 
     gn = GoogleNews(country=geo)
-    # s = gn.top_news(proxies=None, scraping_bee = None)
     s = gn.search(topic, when=time)
-    latest = []
+    results = []
     count = 0
 
     for entry in s["entries"]:
         if count < 12:
-            latest.append((entry['title'], entry['link']))
+            results.append((entry['title'], entry['link']))
             count += 1
 
-    return render(request, "home.html", {'latest':latest})
+    return render(request, "search_results.html", {'results':results})
 

@@ -1,20 +1,10 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
-    <head>
-         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <title>
-        {% block title %}{% endblock %}
-        </title>
 
-     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
+    {% block title %}{% endblock %}
 
-    </head>
-    <body>
-        <div class="wrapper" style="margin: auto 10px;">
 
-        {% block content %}{% endblock %}
+    {% block content %}
         <div class="row">
         {% for n in latest %}
         <div class="col-3" style="border:solid 1px;"><a href="{{n.1}}" target="_blank">{{ n.0 }}</a></div>
@@ -36,6 +26,5 @@
         <br>
         <button type="submit" class="btn-success">Go!</button>
         </form>
-        </div>
-    </body>
-</html>
+
+    {% endblock %}
