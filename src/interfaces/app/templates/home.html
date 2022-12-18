@@ -13,11 +13,10 @@
     </head>
     <body>
 
-<h1>test</h1>
         {% block content %}{% endblock %}
 
         {% for n in latest %}
-        <h1>{{ n.title }}</h1>
+        <a href="{{n.1}}" target="_blank">{{ n.0 }}</a>
         <br>
         {% endfor %}
 

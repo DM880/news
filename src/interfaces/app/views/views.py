@@ -11,14 +11,25 @@ from pygooglenews import GoogleNews
 def home(request):
 
     gn = GoogleNews(country="NZ")
-
-    s = gn.search('new')
-    latest = [()]
+    # s = gn.top_news(proxies=None, scraping_bee = None)
+    s = gn.search('', when="1d")
+    latest = []
+    # count = 0
 
     for entry in s["entries"]:
-        latest.append(entry['title'])
-        print(entry["title"])
-
-
+        # if count < 10:
+        latest.append((entry['title'], entry['link']))
+            # count += 1
 
     return render(request, "home.html", {'latest':latest})
+
+
+def search_topic(request):
+
+    if request.method == 'POST':
+
+        topic = request.POST.get('topic')
+        geo = request.POST.get('location')
+
+        pass
+    pass
