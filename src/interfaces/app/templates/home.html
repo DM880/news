@@ -16,5 +16,10 @@
 <h1>test</h1>
         {% block content %}{% endblock %}
 
+        {% for n in latest %}
+        <h1>{{ n.title }}</h1>
+        <br>
+        {% endfor %}
+
     </body>
 </html>
