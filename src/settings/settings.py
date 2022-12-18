@@ -133,3 +133,9 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://dm880-code50-69689379-9775g9q6w3xgv7-8000.githubpreview.dev",
+    "https://ide-d552d84f01fc444aacb387647fc6cca7-8080.cs50.ws",
+    "https://*.127.0.0.1",
+]

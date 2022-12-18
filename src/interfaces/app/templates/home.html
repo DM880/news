@@ -12,13 +12,30 @@
 
     </head>
     <body>
+        <div class="wrapper" style="margin: auto 10px;">
 
         {% block content %}{% endblock %}
-
+        <div class="row">
         {% for n in latest %}
-        <a href="{{n.1}}" target="_blank">{{ n.0 }}</a>
+        <div class="col-3" style="border:solid 1px;"><a href="{{n.1}}" target="_blank">{{ n.0 }}</a></div>
         <br>
         {% endfor %}
+        </div>
 
+        <form action="{% url 'search' %}" method="post">
+            {% csrf_token %}
+        <h2>Topic:</h2>
+        <input name="topic" class="topic"></input>
+
+        <h2>Country:</h2>
+        <input name="location" class="country"></input>
+
+        <h2>Time:</h2>
+        <input name="time" class="time"></input>
+
+        <br>
+        <button type="submit" class="btn-success">Go!</button>
+        </form>
+        </div>
     </body>
 </html>

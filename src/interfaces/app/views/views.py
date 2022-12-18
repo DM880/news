@@ -14,12 +14,12 @@ def home(request):
     # s = gn.top_news(proxies=None, scraping_bee = None)
     s = gn.search('', when="1d")
     latest = []
-    # count = 0
+    count = 0
 
     for entry in s["entries"]:
-        # if count < 10:
-        latest.append((entry['title'], entry['link']))
-            # count += 1
+        if count < 12:
+            latest.append((entry['title'], entry['link']))
+            count += 1
 
     return render(request, "home.html", {'latest':latest})
 
@@ -30,6 +30,30 @@ def search_topic(request):
 
         topic = request.POST.get('topic')
         geo = request.POST.get('location')
+        time = request.POST.get('time')
 
-        pass
-    pass
+        return redirect(reverse('search_results', args=(topic,geo,time)))
+
+
+def search_results(request, topic, geo, time):
+
+    if not topic or None:
+        topic = ''
+    if not geo or None:
+        geo = ''
+    if not time or None:
+        time = ''
+
+    gn = GoogleNews(country=geo)
+    # s = gn.top_news(proxies=None, scraping_bee = None)
+    s = gn.search(topic, when=time)
+    latest = []
+    count = 0
+
+    for entry in s["entries"]:
+        if count < 12:
+            latest.append((entry['title'], entry['link']))
+            count += 1
+
+    return render(request, "home.html", {'latest':latest})
+
