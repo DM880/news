@@ -3,6 +3,8 @@
 
     {% block title %}Home{% endblock %}
 
+    {% block css %}<link rel='stylesheet' href="{% static 'css/home.css' %}"> {% endblock %}
+
 
     {% block content %}
         <div class="row">
@@ -12,16 +14,18 @@
         {% endfor %}
         </div>
 
+        <div class="input-wrapper">
+
         <form action="{% url 'search' %}" method="post">
             {% csrf_token %}
-        <h2>Topic:</h2>
-        <input name="topic" class="topic"></input>
+        <h3 class="label">Topic</h3>
+        <input name="topic" class="topic input-search"></input>
 
-        <h2>Country:</h2>
-        <input name="location" class="country"></input>
+        <h3 class="label">Country</h3>
+        <input name="location" class="country input-search"></input>
 
-        <h2>Time:</h2>
-        <select name="time" class="time">
+        <h3 class="label">Date</h3>
+        <select name="time" class="time input-search">
             <option value='1h' class="option" selected>1 Hour</option>
             <option value='1w' class="option">1 Week</option>
             <option value='1m' class="option">1 Month</option>
@@ -31,5 +35,7 @@
         <br>
         <button type="submit" class="btn-success">Go!</button>
         </form>
+
+         </div>
 
     {% endblock %}
