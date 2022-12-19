@@ -4,8 +4,8 @@ from pygooglenews import GoogleNews
 
 def home(request):
 
-    gn = GoogleNews(country="NZ")
-    s = gn.search('', when="1d")
+    gn = GoogleNews()
+    s = gn.top_news()
     latest = []
     count = 0
 
@@ -40,18 +40,18 @@ def search_topic(request):
         elif time and topic and geo:
             gn = GoogleNews()
             s = gn.search(topic, when=time)
-            
+
         else:
             gn = GoogleNews(country=geo)
             s = gn.search(topic, when=time)
-        
+
         results = []
         count = 0
 
         for entry in s["entries"]:
             if count < 12:
                 results.append((entry['title'], entry['link']))
-                count += 1        
+                count += 1
 
         return render(request, "search_results.html", {'results':results})
 
