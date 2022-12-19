@@ -24,25 +24,22 @@ def search_topic(request):
         topic = request.POST.get('topic')
         geo = request.POST.get('location')
         time = request.POST.get('time')
+        language = request.POST.get('language')
 
         if not topic or None and geo:
-            gn = GoogleNews(country=geo)
+            gn = GoogleNews(lang=language, country=geo)
             s = gn.top_news()
 
         elif not geo or None and topic:
-            gn = GoogleNews()
+            gn = GoogleNews(lang=language)
             s = gn.search(topic)
 
         elif topic and geo and not time or None:
-            gn = GoogleNews(country=geo)
+            gn = GoogleNews(lang=language, country=geo)
             s = gn.search(topic)
 
-        elif time and topic and geo:
-            gn = GoogleNews()
-            s = gn.search(topic, when=time)
-
         else:
-            gn = GoogleNews(country=geo)
+            gn = GoogleNews(lang=language, country=geo)
             s = gn.search(topic, when=time)
 
         results = []
