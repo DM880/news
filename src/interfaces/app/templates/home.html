@@ -18,8 +18,8 @@
 
         <form action="{% url 'search' %}" method="post">
             {% csrf_token %}
-        <h3 class="label">Topic</h3>
-        <input name="topic" class="topic input-search"></input>
+        <h3 class="label">Keyword</h3>
+        <input name="keyword" class="keyword input-search"></input>
 
         <h3 class="label">Country</h3>
         <input name="location" class="country input-search"></input>
@@ -36,6 +36,17 @@
             <option value='1w' class="option">1 Week</option>
             <option value='1m' class="option">1 Month</option>
             <option value='1y' class="option">1 Year</option>
+        </select>
+
+        <h3 class="label">Topic</h3>
+        <select name="topic" class="topic input-search">
+            <option value='WORLD' class="option" selected>World</option>
+            <option value='NATION' class="option">Nation</option>
+            <option value='BUSINESS' class="option">Business</option>
+            <option value='ENTERTAINMENT' class="option">Entertainment</option>
+             <option value='SCIENCE' class="option">Science</option>
+              <option value='SPORTS' class="option">Sports</option>
+               <option value='HEALTH' class="option">Health</option>
         </select>
 
         <br>
