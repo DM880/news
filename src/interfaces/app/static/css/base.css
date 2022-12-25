@@ -7,6 +7,19 @@ body{
     background-color: #EEEEEE;
 }
 
+nav{
+  margin-top: -8px;
+  height: 50px;
+  background-color: #2C3333;
+  text-align: center;
+  font-family: 'Chivo Mono', monospace;
+  color: white;
+}
+
+nav h5{
+  padding-top: 13px;
+}
+
 
 .row{
     font-family: 'Chivo Mono', monospace;
