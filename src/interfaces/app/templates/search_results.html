@@ -4,13 +4,39 @@
 
 {% block content %}
 
-<a href="{% url 'home' %}" type="button" class="btn-warning">Back</a>
+<a href="{% url 'home' %}" type="button" class="back-btn">BACK</a>
 
     <div class="row">
     {% for n in results %}
-    <div class="col col-3" style="border:solid 1px;"><a href="{{n.1}}" target="_blank">{{ n.0 }}</a></div>
+   <div class="col col-12"><a href="{{n.1}}" target="_blank">{{ n.0 }}</a></div>
     <br>
     {% endfor %}
     </div>
+
+    <style>
+        .back-btn{
+          font-family: 'Chivo Mono', monospace;
+          background-color: #EB455F;
+          border-radius: 5px;
+          color: white;
+          font-size: 20px;
+          border: none;
+          height: 40px;
+          transition: all 0.5s;
+          border: solid 2px #EB455F;
+          text-decoration: none;
+          padding-left: 10px;
+          padding-right: 10px;
+          position: absolute;
+          left: 5px;
+          top: 5px;
+        }
+
+        .back-btn:hover{
+          border:solid 2px #EB455F;
+          color: #EB455F;
+          background-color: transparent;
+        }
+    </style>
 
 {% endblock %}
