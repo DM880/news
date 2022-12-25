@@ -1,17 +1,8 @@
-.row{
-  width: 100%;
-  margin: auto;
-  text-align: center;
-}
-
-.col-3{
-   height: 100px;
-}
-
-
 .input-wrapper{
   font-family: 'Montserrat',sans-serif;
   margin-left: 20px;
+  width: 50%;
+  float: right;
 }
 
 .input-search{
@@ -36,6 +27,17 @@
   outline: none;
   background-color: #3C4048;
   color: white;
+}
+
+
+@media (max-width: 800px){
+  .input-wrapper{
+    float: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
 }
 
 

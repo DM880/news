@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono&display=swap');
+
+body{
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.row{
+    font-family: 'Chivo Mono', monospace;
+    width: 50%;
+    float: left;
+
+    /*margin: auto;*/
+    /*text-align: center;*/
+}
+
+.row a{
+    text-decoration: none;
+    color: black;
+}
+
+.row a:hover{
+    color: #0014FF;
+}
+
+.col{
+   height: 100px;
+}
+
+
+@media (max-width: 800px){
+  .row{
+    float: none;
+    width: 100%;
+    margin: auto;
+  }
+
+  .col{
+      height: auto;
+  }
+}
