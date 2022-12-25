@@ -41,7 +41,8 @@ nav h5{
 }
 
 .col{
-   height: 100px;
+  min-height: 80px;
+   height: auto;
    border-radius: 5px;
    background-color: white;
    box-shadow: black;

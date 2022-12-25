@@ -44,11 +44,8 @@ def search_topic(request):
             s = gn.search(keyword, when=time)
 
         results = []
-        count = 0
 
         for entry in s["entries"]:
-            if count < 12:
-                results.append((entry["title"], entry["link"]))
-                count += 1
+            results.append((entry["title"], entry["link"]))
 
         return render(request, "search_results.html", {"results": results})
