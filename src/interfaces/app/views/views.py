@@ -6,13 +6,13 @@ def home(request):
 
     gn = GoogleNews()
     s = gn.top_news()
+
     latest = []
-    # count = 0
 
     for entry in s["entries"]:
-        # if count < 12:
-        latest.append((entry["title"], entry["link"]))
-        # count += 1
+        latest.append((entry["title"], entry["link"], entry["published"]))
+
+    latest.sort(key=lambda tup: tup[2]) #sort latest by newest
 
     return render(request, "home.html", {"latest": latest})
 
@@ -49,3 +49,7 @@ def search_topic(request):
             results.append((entry["title"], entry["link"]))
 
         return render(request, "search_results.html", {"results": results})
+
+
+
+
