@@ -4,6 +4,18 @@
     {% block title %}Home{% endblock %}
 
     {% block content %}
+
+<form action="{% url 'home' %}" method="POST">
+    {% csrf_token %}
+    <div class='sort-div'>
+  <select name="sorting_element" class='input-sort'>
+  <option value="latest">Latest</option>
+  <option value="oldest">Oldest</option>
+</select>
+<button type="submit" class="btns sort-btn">SORT</button>
+</div>
+  </form>
+
         <div class="row">
         {% for n in latest %}
         <div class="col col-12"><a href="{{n.1}}" target="_blank">{{ n.0 }}</a></div>
@@ -16,10 +28,10 @@
         <form action="{% url 'search' %}" method="post">
             {% csrf_token %}
         <h3 class="label">Keyword</h3>
-        <input name="keyword" class="keyword input-search"></input>
+        <input name="keyword" class="input-search"></input>
 
         <h3 class="label">Country</h3>
-        <input name="location" class="country input-search"></input>
+        <input name="location" class="input-search"></input>
         <h3 class="label">Language</h3>
         <select name="language" class='input-search'>
           <option value="en" selected>English</option>
@@ -33,29 +45,18 @@
         </select>
 
         <h3 class="label">Date</h3>
-        <select name="time" class="time input-search">
+        <select name="time" class="input-search">
             <option value='1h' class="option" selected>1 Hour</option>
             <option value='1w' class="option">1 Week</option>
             <option value='1m' class="option">1 Month</option>
             <option value='1y' class="option">1 Year</option>
         </select>
 
-        <!--<h3 class="label">Topic</h3>-->
-        <!--<select name="topic" class="topic input-search">-->
-        <!--    <option value='NONE' class="option" selected>All</option>-->
-        <!--    <option value='WORLD' class="option">World</option>-->
-        <!--    <option value='NATION' class="option">Nation</option>-->
-        <!--    <option value='BUSINESS' class="option">Business</option>-->
-        <!--    <option value='ENTERTAINMENT' class="option">Entertainment</option>-->
-        <!--     <option value='SCIENCE' class="option">Science</option>-->
-        <!--      <option value='SPORTS' class="option">Sports</option>-->
-        <!--       <option value='HEALTH' class="option">Health</option>-->
-        <!--</select>-->
-
         <br>
-        <button type="submit" class="search-btn">SEARCH🔎</button>
+        <button type="submit" class="btns search-btn">SEARCH🔎</button>
         </form>
 
          </div>
+
 
     {% endblock %}

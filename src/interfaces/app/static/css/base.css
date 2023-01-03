@@ -26,7 +26,7 @@ nav h5{
     width: 50%;
     margin: 10px;
     float: left;
-    margin-top: 50px;
+    margin-top: 60px;
 
 }
 
@@ -51,7 +51,55 @@ nav h5{
   }
 
 
-/*//////Input/////////*/
+.btns{
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  border: none;
+  height: 40px;
+  transition: all 0.5s;
+}
+
+/*//////////////////Sort/////////////*/
+
+
+.sort-div{
+  position: absolute;
+  top: 55px;
+  left: 10px;
+  font-family: 'Chivo Mono', monospace;
+}
+
+.input-sort{
+  border: solid 2px #FC4F4F;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  height: 40px;
+  width: auto;
+  font-size: 20px;
+  transition: all 300ms ease-in-out;
+  border-radius: 5px;
+  padding-left: 5px;
+  margin-bottom: 20px;
+  background-color: #EEEEEE;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  color: #277BC0;
+}
+
+.sort-btn{
+  background-color: #0081C9;
+  border: solid 2px #0081C9;
+}
+
+.sort-btn:hover{
+  border:solid 2px #0081C9;
+  color: #0081C9;
+  background-color: transparent;
+}
+
+/*//////Search Input/////////*/
 
 .input-wrapper{
   font-family: 'Chivo Mono', monospace;
@@ -87,12 +135,6 @@ nav h5{
 
 .search-btn{
   background-color: #54B435;
-  border-radius: 5px;
-  color: white;
-  font-size: 20px;
-  border: none;
-  height: 40px;
-  transition: all 0.5s;
   border: solid 2px #54B435;
 }
 
@@ -126,5 +168,11 @@ nav h5{
 
   .input-search{
     width: 100%;
+  }
+
+  .sort-div{
+    position: relative;
+    top: 20px;
+    margin-bottom: 20px;
   }
 }

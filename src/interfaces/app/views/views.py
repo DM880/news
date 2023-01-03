@@ -12,6 +12,19 @@ def home(request):
     for entry in s["entries"]:
         latest.append((entry["title"], entry["link"], entry["published"], entry["id"]))
 
+
+    if request.method == "POST":
+        sorting_element = request.POST.get("sorting_element")
+
+        if sorting_element == "oldest":
+
+            latest.sort(key=lambda tup: tup[2], reverse=True) #sort latest by oldest
+
+        else:
+
+            latest.sort(key=lambda tup: tup[2]) #sort latest by newest
+
+
     return render(request, "home.html", {"latest": latest})
 
 
@@ -47,29 +60,3 @@ def search_topic(request):
             results.append((entry["title"], entry["link"]))
 
         return render(request, "search_results.html", {"results": results})
-
-
-# def sort_by(request):
-
-#     sorting_element = request.GET.get('sorting_element')
-#     keyword = request.GET.get("keyword")
-#     geo = request.GET.get("location")
-#     time = request.GET.get("time")
-#     language = request.GET.get("language")
-
-#     if sorting_element == "latest":
-
-#         latest.sort(key=lambda tup: tup[2]) #sort latest by newest
-
-#     elif sorting_element == "oldest":
-
-#         latest.sort(key=lambda tup: tup[2], reverse=True) #sort latest by oldest
-
-#     elif sorting_element == "relevance":
-
-#         latest.sort(key=lambda tup: tup[3]) #sort latest by relevance
-
-#     pass
-
-
-
