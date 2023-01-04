@@ -17,8 +17,8 @@
   </form>
 
         <div class="row">
-        {% for n in latest %}
-        <div class="col col-12"><a href="{{n.1}}" target="_blank">{{ n.0 }}</a></div>
+        {% for entry in stories_list %}
+        <div class="col col-12"><a href="{{entry.1}}" target="_blank">{{ entry.0 }}</a></div>
         <br>
         {% endfor %}
         </div>

@@ -7,8 +7,8 @@
 <a href="{% url 'home' %}" type="button" class="back-btn">BACK</a>
 
     <div class="row">
-    {% for n in results %}
-   <div class="col col-12"><a href="{{n.1}}" target="_blank">{{ n.0 }}</a></div>
+    {% for entry in results %}
+   <div class="col col-12"><a href="{{entry.1}}" target="_blank">{{ entry.0 }}</a></div>
     <br>
     {% endfor %}
     </div>

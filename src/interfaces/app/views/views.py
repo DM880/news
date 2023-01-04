@@ -4,28 +4,30 @@ from pygooglenews import GoogleNews
 
 def home(request):
 
-    gn = GoogleNews()
-    s = gn.top_news()
+    google_news = GoogleNews()
+    stories = google_news.top_news()
 
-    latest = []
+    stories_list = []
 
-    for entry in s["entries"]:
-        latest.append((entry["title"], entry["link"], entry["published"], entry["id"]))
-
+    for entry in stories["entries"]:
+        stories_list.append(
+            (entry["title"], entry["link"], entry["published"], entry["id"])
+        )
 
     if request.method == "POST":
         sorting_element = request.POST.get("sorting_element")
 
         if sorting_element == "oldest":
 
-            latest.sort(key=lambda tup: tup[2], reverse=True) #sort latest by oldest
+            stories_list.sort(
+                key=lambda tup: tup[2], reverse=True
+            )  # sort stories_list by oldest
 
         else:
 
-            latest.sort(key=lambda tup: tup[2]) #sort latest by newest
+            stories_list.sort(key=lambda tup: tup[2])  # sort stories_list by latest
 
-
-    return render(request, "home.html", {"latest": latest})
+    return render(request, "home.html", {"stories_list": stories_list})
 
 
 def search_topic(request):
@@ -36,27 +38,26 @@ def search_topic(request):
         geo = request.POST.get("location")
         time = request.POST.get("time")
         language = request.POST.get("language")
-        # topic = request.POST.get('topic') # unsure
 
         if not keyword or None and geo:
-            gn = GoogleNews(lang=language, country=geo)
-            s = gn.top_news()
+            google_news = GoogleNews(lang=language, country=geo)
+            stories = google_news.top_news()
 
         elif not geo or None and keyword:
-            gn = GoogleNews(lang=language)
-            s = gn.search(keyword)
+            google_news = GoogleNews(lang=language)
+            stories = google_news.search(keyword)
 
         elif keyword and geo and not time or None:
-            gn = GoogleNews(lang=language, country=geo)
-            s = gn.search(keyword)
+            google_news = GoogleNews(lang=language, country=geo)
+            stories = google_news.search(keyword)
 
         else:
-            gn = GoogleNews(lang=language, country=geo)
-            s = gn.search(keyword, when=time)
+            google_news = GoogleNews(lang=language, country=geo)
+            stories = google_news.search(keyword, when=time)
 
         results = []
 
-        for entry in s["entries"]:
+        for entry in stories["entries"]:
             results.append((entry["title"], entry["link"]))
 
         return render(request, "search_results.html", {"results": results})
